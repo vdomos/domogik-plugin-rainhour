@@ -215,6 +215,7 @@ Possible value for "niveauPluie":
     4 : "Précipitations fortes"
 
 If sum of value = 12, no raining is provided : "Pas de précipitations"
+
 If sum of value = 48 : heavy rain is expected in the all next hour.
 
 

@@ -29,7 +29,7 @@ The cover of this service is not available on all cities because of reliefs, her
 
 
 The plugin display the data provided in the form of icons like this:
-With 5 cases of possible forecasts available in the API "Meteo France":
+With 5 cases of possible forecasts available in the "Meteo France" API :
 
     * No rain (value 1)
     * Light rain (value 2)
@@ -70,9 +70,12 @@ locationame               DT_String                    Locaton Name (for display
 ===================== =========================== ======================================================================
 
 
-Admin/Advanced page of the plugin can create the device with the location ID/Name with a search fonctionnality:
+Admin/Advanced page of the plugin **can create the device** with the location ID/Name with a search fonctionnality:
 
 .. image:: domoweb_Weather_Rainhour_5.png
+
+
+Just click on the link and you will be redirected to the device creation page with pre-filled parameters:
 
 .. image:: domoweb_Weather_Rainhour_6.png
 
@@ -81,7 +84,6 @@ The plugin provided 2 sensors for use in a scenario:
     * **RainInHour**      (Boolean 'true' if rain in the next hour) 
     * **heavyRainInHour** (Boolean 'true' if heavy rain in the next hour)
     
-
 
 Start the plugin
 ================
@@ -97,7 +99,7 @@ You can now place the widgets of your devices features on the user interface.
 
 This is 2 types of widgets to choose:
 
-Here is the 2 widgets **rainhour forecast** and **rainhour forecast 2** with the 2 sensor boolean widgets:
+Here is the 2 widgets **rainhour forecast** and **rainhour forecast 2** with the 2 sensors boolean widgets:
 
 .. image:: domoweb_Weather_Rainhour_7.png
 
