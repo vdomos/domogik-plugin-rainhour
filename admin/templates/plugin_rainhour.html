@@ -1,0 +1,52 @@
+{% extends theme("base/base.html") %}
+{% import theme("base/wtf.html") as wtf %}
+
+{% block content %}
+{% include theme("client_menu.html") %}
+
+
+<div class="container">
+    <div class="panel panel-default">
+		<div class="panel-heading"><h4>{% trans %}Search location{% endtrans %}</h4></div>
+			<div class="panel-body">
+                <form method="POST">
+                    <div class="form-group">
+                        {{ form.csrf_token }}
+                        {{ form.location(size=100, class="form-control") }}
+                    </div>
+                    <button class="btn btn-info" type="submit">{% trans %}Search{% endtrans %}</button>
+                </form>
+            </div>
+        </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+		<div class="panel-heading"><h4>{% trans %}Result{% endtrans %}</h4></div>
+			<div class="panel-body">
+                <p>{% trans %}Locations found {% endtrans %}:</p>
+                <table class='table'>
+                    <thead>
+                        <tr><th>{% trans %}Location{% endtrans %}</th><th>{% trans %}ID  (Clic to create device){% endtrans %}</th><th>{% trans %}Rain forecast{% endtrans %}</th></tr>
+                    </thead>
+                    <tbody>
+                        <!-- http://hades:40406/client/plugin-rainhour.hades/dmg_devices/new/type/rainhour.forecast?location=571320 -->
+                        {% for location in informations %}
+                        <tr><td>{{ location['nomAffiche'] }}</td><td><a href="/client/{{ clientid }}/dmg_devices/new/type/rainhour.forecast?location={{ location['id'] }}&locationname={{ location['nomAffiche'] }}">{{ location['id'] }}</a></td><td>{{ location['pluieAvalaible'] }}</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+			</div>
+	</div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+		<div class="panel-heading"><h4>{% trans %}Last errors in plugin log{% endtrans %}</h4></div>
+			<div class="panel-body">
+				<pre>{{ errorlog }}</pre>
+			</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,303 @@
+{
+    "json_version": 2,
+    
+    "identity": {
+        "author": "domos", 
+        "author_email": "domos.vesta at gmail dt com", 
+        "tags": ["computer"], 
+        "dependencies": [],
+        "description": "Domogik Plugin for 'Meteo France' rain forecast in hour", 
+        "domogik_min_version": "0.5.0", 
+        "name": "rainhour", 
+        "type": "plugin", 
+        "version": "0.1"
+    }, 
+    
+    "configuration": [],
+    
+    "device_types": {
+        "rainhour.forecast": {
+            "description": "Prevision pluie sur 1 heure",
+            "id": "rainhour.forecast",
+            "name": "Prevision pluie sur 1 heure",
+            "commands": [],
+            "sensors": ["rainForecastLocation",
+                        "rainForecastDate",
+                        "rainForecastTxt",
+                        "rainLevel0mn",
+                        "rainLevel5mn",
+                        "rainLevel10mn",
+                        "rainLevel15mn",
+                        "rainLevel20mn",
+                        "rainLevel25mn",
+                        "rainLevel30mn",
+                        "rainLevel35mn",
+                        "rainLevel40mn",
+                        "rainLevel45mn",
+                        "rainLevel50mn",
+                        "rainLevel55mn",
+                        "rainInHour",
+                        "heavyRainInHour"
+                        ],
+            "parameters": [
+                {
+                    "key": "location",
+                    "xpl": false,
+                    "description": "The location ID (use 'Advanced' tab to search your location)",
+                    "type": "string"
+                },
+                {
+                    "key": "locationname",
+                    "xpl": false,
+                    "description": "The locationName (Only for display in widget)",
+                    "type": "string"
+                }
+            ]
+        }
+    },
+    
+    "sensors": {
+        "rainForecastLocation": {
+            "name": "Rain forecast Location",
+            "data_type": "DT_String",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainForecastDate": {
+            "name": "Rain forecast Date",
+            "data_type": "DT_String",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainForecastTxt": {
+            "name": "Rain forecast Info",
+            "data_type": "DT_String",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": true,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel0mn": {
+            "name": "Rain level 0mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel5mn": {
+            "name": "Rain level 5mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel10mn": {
+            "name": "Rain level 10mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel15mn": {
+            "name": "Rain level 15mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel20mn": {
+            "name": "Rain level 20mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel25mn": {
+            "name": "Rain level 25mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel30mn": {
+            "name": "Rain level 30mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel35mn": {
+            "name": "Rain level 35mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel40mn": {
+            "name": "Rain level 40mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel45mn": {
+            "name": "Rain level 45mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel50mn": {
+            "name": "Rain level 50mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainLevel55mn": {
+            "name": "Rain level 55mn",
+            "data_type": "DT_Number",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "rainInHour": {
+            "name": "Rain In Hour",
+            "data_type": "DT_Bool",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        },
+        "heavyRainInHour": {
+            "name": "heavy Rain In Hour",
+            "data_type": "DT_Bool",
+            "conversion": "",
+            "incremental": false,
+            "timeout": 900,
+            "history": {
+                "store": false,
+                "duplicate": false,
+                "max": 0,
+                "expire": 0,
+                "round_value": 0
+            }
+        }
+    },
+    
+    "commands": {},
+    "xpl_stats": {},
+    "xpl_commands": {}
+}

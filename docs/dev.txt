@@ -1,0 +1,227 @@
+.. _index:
+
+========================
+Development informations
+========================
+
+
+
+"Meteo France" Rain Forecast API
+================================
+
+Two URL are available for use:
+
+* One for the location ID search:
+
+.. code-block:: none
+
+    http://www.meteofrance.com/mf3-rpc-portlet/rest/lieu/facet/pluie/search/<string to search>
+    
+The result is a list of JSON object.
+    
+Example:
+
+.. code-block:: none
+
+    http://www.meteofrance.com/mf3-rpc-portlet/rest/lieu/facet/pluie/search/senlis
+    [ {
+    "id" : "606120",
+    "onTheSnowSkiiId" : 0,
+    "nomAffiche" : "Senlis (60300)",
+    "type" : "VILLE_FRANCE",
+    "slug" : "senlis",
+    "codePostal" : "60300",
+    "timezone" : "Europe/Paris",
+    "altitude" : 76,
+    "altitudeMin" : 0,
+    "altitudeMax" : 0,
+    "distance" : 0.0,
+    "nbHabitants" : 16907,
+    "lat" : 49.206837,
+    "lon" : 2.586072,
+    "directDisplay" : false,
+    "nbView" : 0,
+    "lastMareeDate" : null,
+    "parent" : null,
+    "positionAffichageCarteX" : 0,
+    "positionAffichageCarteY" : 0,
+    "value" : "Senlis (60300)",
+    "pluieAvalaible" : true
+    },
+    ...
+    }, {
+    "id" : "807330",
+    "onTheSnowSkiiId" : 0,
+    "nomAffiche" : "Senlis-le-Sec (80300)",
+    "type" : "VILLE_FRANCE",
+    "slug" : "senlis-le-sec",
+    "codePostal" : "80300",
+    "timezone" : "Europe/Paris",
+    "altitude" : 82,
+    "altitudeMin" : 0,
+    "altitudeMax" : 0,
+    "distance" : 0.0,
+    "nbHabitants" : 286,
+    "lat" : 50.025027,
+    "lon" : 2.57755,
+    "directDisplay" : false,
+    "nbView" : 0,
+    "lastMareeDate" : null,
+    "parent" : null,
+    "positionAffichageCarteX" : 0,
+    "positionAffichageCarteY" : 0,
+    "value" : "Senlis-le-Sec (80300)",
+    "pluieAvalaible" : true
+    } ]
+
+
+If the search is negative, the result is a empty list:
+
+.. code-block:: none
+
+    http://www.meteofrance.com/mf3-rpc-portlet/rest/lieu/facet/pluie//search/strasbourg
+    []
+
+
+* The second URL is use to get the rain forecast for the next hour with the "id" provide in the previous search:
+
+.. code-block:: none
+
+    http://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/<id>
+
+The result is a list of JSON object.
+
+Example:
+
+.. code-block:: none
+
+    http://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/606120
+    {
+    "idLieu" : "606120",
+    "echeance" : "201604130810",
+    "lastUpdate" : "08h00",
+    "isAvailable" : true,
+    "hasData" : true,
+    "niveauPluieText" : [ "De08h10 à 08h15 : Précipitations faibles", "De08h15 à 08h30 : Précipitations modérées", "De08h30 à 09h00 : Précipitations faibles", "De09h00 à 09h10 : Pas de précipitations" ],
+    "dataCadran" : [ {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations modérées",
+        "niveauPluie" : 3,
+        "color" : "009ee0"
+    }, {
+        "niveauPluieText" : "Précipitations modérées",
+        "niveauPluie" : 3,
+        "color" : "009ee0"
+    }, {
+        "niveauPluieText" : "Précipitations modérées",
+        "niveauPluie" : 3,
+        "color" : "009ee0"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Précipitations faibles",
+        "niveauPluie" : 2,
+        "color" : "5ec5ed"
+    }, {
+        "niveauPluieText" : "Pas de précipitations",
+        "niveauPluie" : 1,
+        "color" : "ffffff"
+    }, {
+        "niveauPluieText" : "Pas de précipitations",
+        "niveauPluie" : 1,
+        "color" : "ffffff"
+    } ]
+    }
+
+
+If the id is unknow, the result a JSON object with no rain data:
+
+.. code-block:: none
+
+    {
+    "idLieu" : "785131",
+    "echeance" : null,
+    "lastUpdate" : null,
+    "isAvailable" : false,
+    "hasData" : false,
+    "niveauPluieText" : null,
+    "dataCadran" : null
+    }
+
+
+There ares 2 data types available in the JSON object of rain forecast:
+
+* one in texte format like that:
+
+.. code-block:: none
+
+    Exemple "niveauPluieText":
+    
+    [ "De08h50 à 09h50 : Pas de précipitations" ]
+    [ "De08h10 à 08h15 : Précipitations faibles", "De08h15 à 08h30 : Précipitations modérées", "De08h30 à 09h00 : Précipitations faibles", "De09h00 à 09h10 : Pas de précipitations" ]
+    [ "De22h05 à 23h05 : Données indisponibles" ]
+
+I use a fonction in plugin to convert this text data in a string use by "rainhour 2" widget:
+
+Text forcast converted to value forcast:
+
+.. code-block:: none
+
+    [u'De20h05  20h10 : Pas de prcipitations', u'De20h10  20h15 : Prcipitations modres', u'De20h15  20h20 : Pas de prcipitations', u'De20h20  20h30 : Prcipitations faibles', u'De20h30  21h05 : Pas de prcipitations']
+        => "20h05-20h10:1,20h10-20h15:3,20h15-20h20:1,20h20-20h30:2,20h30-21h05:1"
+
+
+* the second in value format like that:
+
+.. code-block:: none
+
+    {
+        "niveauPluieText" : "Pas de précipitations",
+        "niveauPluie" : 1,
+        "color" : "ffffff"
+    }
+
+For the 12 x 5mn period of a hour.
+
+Possible value for "niveauPluie":
+
+.. code-block:: none
+
+    0 : "Données indisponibles"
+    1 : "Pas de précipitations"
+    2 : "Précipitations faibles"
+    3 : "Précipitations modérées"
+    4 : "Précipitations fortes"
+
+If sum of value = 12, no raining is provided : "Pas de précipitations"
+If sum of value = 48 : heavy rain is expected in the all next hour.
+
+
+
+
+
+
+
+
+

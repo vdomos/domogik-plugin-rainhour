@@ -1,0 +1,103 @@
+.. _index:
+
+===================
+Plugin rainhour
+===================
+
+Purpose
+=======
+
+The plugin allows you to display rain forecast from "Meteo France" for the next hour
+This service is available online here (Service only available for the cities of France):
+
+http://www.meteofrance.com/previsions-meteo-france/previsions-pluie/lias
+
+http://www.meteofrance.com/previsions-meteo-france/previsions-pluie/nancy/54000
+
+
+.. image:: domoweb_Weather_Rainhour_8.png
+
+
+This service gives the forecast chance of rain for the next hour with a precision of 5 minutes.
+Every 5 minutes, this forecast is updated.
+
+For developpement, there is a API available to use the data provide (see dev page for information)
+
+The cover of this service is not available on all cities because of reliefs, here is the coverage map "Météo France":
+
+.. image:: domoweb_Weather_Rainhour_9.png
+
+
+The plugin display the data provided in the form of icons like this:
+With 5 cases of possible forecasts available in the API "Meteo France":
+
+    * No rain (value 1)
+    * Light rain (value 2)
+    * Moderate rain (value 3)
+    * Heavy rain (value 4)
+    * No data (value 0)
+
+    
+.. image:: domoweb_Weather_Rainhour_2.png
+
+
+
+Dependencies
+============
+
+No dependencies needed
+
+Plugin configuration
+====================
+
+No configuration needed for the plugin
+   
+Create the domogik devices
+==========================
+
+Device parameters configuration
+-------------------------------
+
+Two parameters are needed for a domogik device creation
+
+
+===================== =========================== ======================================================================
+Key                   Type                        Description
+===================== =========================== ======================================================================
+location                  DT_String                    ID "Meteo France" of the location
+--------------------- --------------------------- ----------------------------------------------------------------------
+locationame               DT_String                    Locaton Name (for displaying in widget)
+===================== =========================== ======================================================================
+
+
+Admin/Advanced page of the plugin can create the device with the location ID/Name with a search fonctionnality:
+
+.. image:: domoweb_Weather_Rainhour_5.png
+
+.. image:: domoweb_Weather_Rainhour_6.png
+
+The plugin provided 2 sensors for use in a scenario:
+
+    * **RainInHour**      (Boolean 'true' if rain in the next hour) 
+    * **heavyRainInHour** (Boolean 'true' if heavy rain in the next hour)
+    
+
+
+Start the plugin
+================
+
+You can now start the plugin (start button) and use the created devices.
+
+
+
+Set up your widgets on the user interface
+=========================================
+
+You can now place the widgets of your devices features on the user interface.
+
+This is 2 types of widgets to choose:
+
+Here is the 2 widgets **rainhour forecast** and **rainhour forecast 2** with the 2 sensor boolean widgets:
+
+.. image:: domoweb_Weather_Rainhour_7.png
+

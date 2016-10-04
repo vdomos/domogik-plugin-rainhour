@@ -1,0 +1,165 @@
+{
+    "json_version" : 2,
+    "identity" : {
+        "type" : "dmw_widgetset",
+        "id" : "weather",
+        "version" : 1,
+        "name" : "Weather",
+        "description" : "Widgets for Weather data",
+        "author" : "Ferllings, Fritz",
+        "author_email" : "cedric@domogik.org, fritz.smh@gmail.com"
+
+    },
+    "widgets": {
+        "uv": {
+            "name" : "U.V. Index",
+            "height" : 1,
+            "width" : 1,
+            "sensors" : {
+                "primary" : {
+                    "name": "UV meter",
+                    "description": "UV meter sensor",
+                    "types" : ["DT_Number"],
+                    "required": true                   
+                }
+            }
+        },
+        "wind": {
+            "name" : "Wind Speed and direction",
+            "height" : 2,
+            "width" : 2,
+            "sensors" : {
+                "direction" : {
+                    "name": "Direction",
+                    "description": "Direction in degree",
+                    "types" : ["DT_Angle"],
+                    "required": true                   
+                },
+                "speed" : {
+                    "name": "Speed",
+                    "description": "Speed m/s (or km/h)",
+                    "types" : ["DT_Speed", "DT_kmhSpeed"],
+                    "required": false                   
+                },
+                "gust" : {
+                    "name": "Gust",
+                    "description": "Gust m/s (or km/h)",
+                    "types" : ["DT_Speed", "DT_kmhSpeed"],
+                    "required": false                   
+                }
+            }
+        },        
+        "current": {
+            "name" : "Current Condition",
+            "description" : "Weather current condition, with temperature",
+            "height" : 1,
+            "width" : 3,
+            "options" : {
+                "displayBackground" : {
+                    "name": "Display a dynamic background",
+                    "description": "Display a background related to the current conditions",
+                    "type": "boolean",
+                    "default": "True"
+                }
+            },
+            "devices" : {
+                "weather" : {
+                    "name": "Location",
+                    "description": "Weather location",
+                    "types" : ["weather.weather"],
+                    "required": true                   
+                }
+            }
+        },
+        "forecast": {
+            "name" : "Forecast",
+            "description" : "Weather forecast",
+            "height" : 2,
+            "width" : 3,
+            "options" : {},
+            "devices" : {
+                "forecast" : {
+                    "name": "Location",
+                    "description": "Forecast location",
+                    "types" : ["weather.weather"],
+                    "required": true                   
+                }
+            }
+        },
+        "sun": {
+            "name" : "Sunrise and sunset",
+            "description" : "Sunrise and sunset informations",
+            "height" : 1,
+            "width" : 2,
+            "options" : {},
+            "devices" : {
+                "weather" : {
+                    "name": "Location",
+                    "description": "Weather location",
+                    "types" : ["weather.weather"],
+                    "required": true                   
+                }
+            }
+        },
+        "current2": {
+            "name" : "Current condition - 2",
+            "description" : "Weather current condition, with temperature",
+            "height" : 1,
+            "width" : 2,
+            "options" : {},
+            "devices" : {
+                "forecast" : {
+                    "name": "Location",
+                    "description": "Weather location",
+                    "types" : ["weather.weather"],
+                    "required": true                   
+                }
+            }
+        },
+        "forecast2": {
+            "name" : "Forecast - 2",
+            "description" : "Weather forecast",
+            "height" : 2,
+            "width" : 2,
+            "options" : {},
+            "devices" : {
+                "forecast" : {
+                    "name": "Location",
+                    "description": "Forecast location",
+                    "types" : ["weather.weather"],
+                    "required": true                   
+                }
+            }
+        },
+        "rainhour": {
+            "name" : "Rain forecast",
+            "description" : "Weather rain forecast",
+            "height" : 2,
+            "width" : 2,
+            "options" : {},
+            "devices" : {
+                "forecast" : {
+                    "name": "Rain",
+                    "description": "Forecast rain",
+                    "types" : ["rainhour.forecast"],
+                    "required": true                   
+                }
+            }
+        },
+        "rainhour2": {
+            "name" : "Rain forecast 2",
+            "description" : "Weather rain forecast",
+            "height" : 2,
+            "width" : 3,
+            "options" : {},
+            "devices" : {
+                "forecast" : {
+                    "name": "Rain",
+                    "description": "Forecast rain",
+                    "types" : ["rainhour.forecast"],
+                    "required": true                   
+                }
+            }
+        }
+    }
+}
