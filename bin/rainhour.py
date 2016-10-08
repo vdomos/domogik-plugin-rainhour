@@ -75,12 +75,9 @@ class RainhourManager(Plugin):
             try:
                 # global device parameters
                 weather_id = self.get_parameter(a_device, "location")
-                
                 weather_loc = self.get_parameter(a_device, "locationname")[0:-8]       # Delete "postal code".
-                device_id = a_device["id"]
-                self._pub.send_event('client.sensor', { self.sensors[device_id]["rainForecastLocation"]: weather_loc })  # Store "Location Name" in sensor for use by widget !
-                
-                rainhour_list[weather_id] = Rainhour(self.log, self.send_data, self.get_stop(), device_id, weather_id)
+                device_id = a_device["id"]                
+                rainhour_list[weather_id] = Rainhour(self.log, self.send_data, self.get_stop(), device_id, weather_id, weather_loc)
 
                 # start the rainhour thread
                 self.log.info(u"Start to check rainhour forecast '{0}'".format(weather_id))
@@ -106,10 +103,11 @@ class RainhourManager(Plugin):
 
 
 
-    def send_data(self, device_id, rainForecastDate, rainInHour, heavyRainInHour, rainHourForecast, rainForecastTxt):
+    def send_data(self, device_id, rainForecastDate, rainInHour, heavyRainInHour, rainHourForecast, rainForecastTxt, rainForecastLoc):
         """ Send the rainhour sensors values over MQ
         """
         data = {}
+        data[self.sensors[device_id]["rainForecastLocation"]] = rainForecastLoc  #  "rainForecastLoc" = sensor name in info.json file
         data[self.sensors[device_id]["rainForecastDate"]] = rainForecastDate     #  "rainForecastDate" = sensor name in info.json file
         data[self.sensors[device_id]["rainInHour"]] = rainInHour                 #  "rainInHour" = sensor name in info.json file
         data[self.sensors[device_id]["heavyRainInHour"]] = heavyRainInHour       #  "heavyRainInHour" = sensor name in info.json file

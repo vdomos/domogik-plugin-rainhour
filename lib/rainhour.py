@@ -59,7 +59,7 @@ class Rainhour:
     """ Rainhour
     """
 
-    def __init__(self, log, send, stop, device_id, weather_id):
+    def __init__(self, log, send, stop, device_id, weather_id, weather_loc):
         """ Init Rainhour object
             @param log : log instance
             @param send : send
@@ -72,6 +72,7 @@ class Rainhour:
         self._stop = stop
         self._device_id = device_id
         self._weather_id = weather_id
+        self._weather_loc = weather_loc
  
 
 
@@ -113,7 +114,7 @@ class Rainhour:
                         minutesdelta += 5
 
                     self.log.info(u"==> Rain forecast for the location '%s': rainForecastDate='%s', rainInHour=%d, heavyRainInHour=%d, rainHourForecast: %s" % (self._weather_id, rainForecastDate, rainInHour, heavyRainInHour, format(rainHourForecast)))
-                    self._send(self._device_id, rainForecastDate, rainInHour, heavyRainInHour, rainHourForecast, rainForecastNb)
+                    self._send(self._device_id, rainForecastDate, rainInHour, heavyRainInHour, rainHourForecast, rainForecastNb, self._weather_loc)
                 else:
                     self.log.warning(u"### No rain data available for this location's ID '%s': %s" % (self._weather_id, format(jsondata)))
             self._stop.wait(300)
