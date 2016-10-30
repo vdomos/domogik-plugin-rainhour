@@ -6,7 +6,7 @@
         "author_email": "domos.vesta at gmail dt com", 
         "tags": ["computer"], 
         "dependencies": [],
-        "description": "Domogik Plugin for 'Meteo France' rain forecast in hour", 
+        "description": "Domogik Plugin for 'Meteo France' rain forecast for next hour", 
         "domogik_min_version": "0.5.0", 
         "name": "rainhour", 
         "type": "plugin", 
@@ -17,9 +17,9 @@
     
     "device_types": {
         "rainhour.forecast": {
-            "description": "Prevision pluie sur 1 heure",
+            "description": "Rain forecast for next hour",
             "id": "rainhour.forecast",
-            "name": "Prevision pluie sur 1 heure",
+            "name": "Rain forecast for next hour",
             "commands": [],
             "sensors": ["rainForecastLocation",
                         "rainForecastDate",
