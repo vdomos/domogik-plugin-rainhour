@@ -66,29 +66,32 @@ class RainhourManager(Plugin):
         # get the sensors id per device : 
         # {device_id1 : {"sensor_name1" : sensor_id1, "sensor_name2" : sensor_id2},  device_id2 : {"sensor_name1" : sensor_id1, "sensor_name2" : sensor_id2}}
         self.sensors = self.get_sensors(self.devices)
-        self.log.info(u"==> sensors:   %s" % format(self.sensors))        # INFO ==> sensors:   {66: {u'rainhour': 159}}  ('device id': 'sensor name': 'sensor id')
+        #self.log.info(u"==> sensors:   %s" % format(self.sensors))        # INFO ==> sensors:   {66: {u'rainhour': 159}}  ('device id': 'sensor name': 'sensor id')
 
         # create a Rainhour for each device
-        threads = {}
+        rainhourthreads = {}
         rainhour_list = {}
         for a_device in self.devices:
             try:
                 # global device parameters
                 weather_id = self.get_parameter(a_device, "location")
-                weather_loc = self.get_parameter(a_device, "locationname")[0:-8]       # Delete "postal code".
+                weather_loc = self.get_parameter(a_device, "locationname")
+                regex = r"([a-zA-Z]+) \((\d{5})\)"
+                if re.search(regex,  weather_loc):
+                    weather_loc = weather_loc[0:-8]       # Delete "postal code".
                 device_id = a_device["id"]                
                 rainhour_list[weather_id] = Rainhour(self.log, self.send_data, self.get_stop(), device_id, weather_id, weather_loc)
 
                 # start the rainhour thread
-                self.log.info(u"Start to check rainhour forecast '{0}'".format(weather_id))
+                self.log.info(u"Start to check rainhour forecast for location '%s' (%s)" % (weather_loc, weather_id))
                 thr_name = "{0}".format(weather_id)
-                threads[thr_name] = threading.Thread(None,
+                rainhourthreads[thr_name] = threading.Thread(None,
                                               rainhour_list[weather_id].check,
                                               thr_name,
                                               (),
                                               {})
-                threads[thr_name].start()
-                self.register_thread(threads[thr_name])
+                rainhourthreads[thr_name].start()
+                self.register_thread(rainhourthreads[thr_name])
 
             except:
                 self.log.error(u"{0}".format(traceback.format_exc()))

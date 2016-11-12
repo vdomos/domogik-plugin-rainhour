@@ -82,7 +82,7 @@ class Rainhour:
         while not self._stop.isSet():
 
             the_url = METEOFRANCEAPIURL + self._weather_id
-            self.log.debug(u"==> The value URL API called: '%s'" % the_url)
+            self.log.debug(u"==> URL API called for the location '%s': '%s'" % (self._weather_loc, the_url))
             try:
                 req = urllib2.urlopen(the_url)
                 jsondata = json.loads(req.read().decode('ascii', errors='ignore'))            # Probleme with unicode !
@@ -95,13 +95,13 @@ class Rainhour:
                 self.log.error(u"### API GET '%s', no json data" % the_url)
             else:
                 if jsondata["isAvailable"] and jsondata["hasData"]:
-                    self.log.info(u"==> echeance = '%s'" % jsondata["echeance"])
+                    self.log.info(u"==> Location '%s' echeance = '%s'" % (self._weather_loc, jsondata["echeance"]))
                     rainForecastDate = datetime.strptime(jsondata["echeance"], "%Y%m%d%H%M").strftime("%Y-%m-%dT%H:%M")     
                     
                     rainForecastTxt = jsondata["niveauPluieText"]
-                    self.log.info(u"==> rainForecastTxt = '%s'" % format(rainForecastTxt))
+                    self.log.info(u"==> Location '%s' rainForecastTxt = '%s'" % (self._weather_loc, format(rainForecastTxt)))
                     rainForecastNb = self.rainForecastTxt2Nb(rainForecastTxt)
-                    self.log.info(u"==> rainForecastNb = '%s'" % format(rainForecastNb))
+                    self.log.info(u"==> Location '%s' rainForecastNb = '%s'" % (self._weather_loc, format(rainForecastNb)))
                     
                     rainInHour = 0
                     heavyRainInHour = 0
@@ -113,10 +113,10 @@ class Rainhour:
                         rainHourForecast[minutesdelta] = rainlevel["niveauPluie"]
                         minutesdelta += 5
 
-                    self.log.info(u"==> Rain forecast for the location '%s': rainForecastDate='%s', rainInHour=%d, heavyRainInHour=%d, rainHourForecast: %s" % (self._weather_id, rainForecastDate, rainInHour, heavyRainInHour, format(rainHourForecast)))
+                    #self.log.debug(u"==> Rain forecast for the location '%s': rainForecastDate='%s', rainInHour=%d, heavyRainInHour=%d, rainHourForecast: %s" % (self._weather_loc, rainForecastDate, rainInHour, heavyRainInHour, format(rainHourForecast)))
                     self._send(self._device_id, rainForecastDate, rainInHour, heavyRainInHour, rainHourForecast, rainForecastNb, self._weather_loc)
                 else:
-                    self.log.warning(u"### No rain data available for this location's ID '%s': %s" % (self._weather_id, format(jsondata)))
+                    self.log.warning(u"### No rain data available for this location '%s': %s" % (self._weather_loc, format(jsondata)))
             self._stop.wait(300)
 
 
