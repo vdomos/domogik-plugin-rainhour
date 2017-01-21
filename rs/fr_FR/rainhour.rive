@@ -1,0 +1,22 @@
+// on ne specifie pas le nom du device par defaut, on peut supposer qu'un seul device de ce type existe, ou que le premier cree est le principal
++ shortcut rain pluie
+* <call>get_sensor_value_per_reference fr_FR, DT_Bool, xx, rainInHour</call> == 1 xx => @ shortcut rain response oui
+@ shortcut rain response non
+
++ shortcut rain response oui
+- Il va pleuvoir dans l'heure qui vient.
+- Il va bientôt pleuvoir.
+- Oui.
+- Oui, il vaut mieux prévoir le parapluie.
+
++ shortcut rain response non
+- Il ne va pas pleuvoir dans l'heure qui vient.
+- Il ne devrait pas pleuvoir dans la prochaine heure.
+- Il ne va pas pleuvoir.
+- Non.
+
++ est[-]ce qu il va [bientot] pleuvoir [dans l heure|dans l'heure] [*]
+@ shortcut rain pluie
+
++ va[-]t il [bientot] pleuvoir [bientot]
+@ shortcut rain pluie
