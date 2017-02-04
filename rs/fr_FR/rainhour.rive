@@ -15,8 +15,24 @@
 - Il ne va pas pleuvoir.
 - Non.
 
-+ est[-]ce qu il va [bientot] pleuvoir [dans l heure|dans l'heure] [*]
++ est[-]ce qu il va [bientot] (pleuvoir|flotter|drasher|mouiller|avoir de la pluie|avoir de la flotte) [bientot|dans l heure] [*]
 @ shortcut rain pluie
 
-+ va[-]t il [bientot] pleuvoir [bientot]
++ est[-]ce que la pluie va (tomber|arriver) [bientot|dans l heure] [*]
+@ shortcut rain pluie
+
++ va[-]t il [bientot] (pleuvoir|flotter|drasher|mouiller) [bientot|dans l heure] [*]
+@ shortcut rain pluie
+
++ est[-]ce qu il [*] risque [*] (pluie|pleuvoir|flotter|drasher|mouiller) [*]
+@ shortcut rain pluie
+
++ est[-]ce (que|qu) [*] (prenne|prendre|besoin) [*] (parapluie) [*]
+@ shortcut rain pluie
+
++ est[-]ce (que|qu) [*] (laisser) [*] (parapluie) [*]
+@ shortcut rain pluie
+
+// usage avec @peuxTu
++ (si il|s il) va [y] (pleuvoir|flotter|drasher|mouiller|avoir de la pluie|avoir de la flotte) [bientot|dans l heure] [*]
 @ shortcut rain pluie
