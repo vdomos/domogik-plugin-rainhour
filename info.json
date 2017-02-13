@@ -10,7 +10,7 @@
         "domogik_min_version": "0.5.0", 
         "name": "rainhour", 
         "type": "plugin", 
-        "version": "0.1"
+        "version": "1.0"
     }, 
     
     "configuration": [],

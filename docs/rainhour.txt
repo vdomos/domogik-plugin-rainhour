@@ -37,9 +37,7 @@ With 5 cases of possible forecasts available in the "Meteo France" API :
     * Heavy rain (value 4)
     * No data (value 0)
 
-    
 .. image:: domoweb_Weather_Rainhour_2.png
-
 
 
 Dependencies

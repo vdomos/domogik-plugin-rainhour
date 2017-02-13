@@ -39,6 +39,7 @@ import urllib2
 from urllib2 import Request, urlopen, URLError, HTTPError
 import json
 from datetime import datetime
+#import random                  # For tests
 
 METEOFRANCEAPIURL = "http://www.meteofrance.com/mf3-rpc-portlet/rest/pluie/"
 
@@ -111,6 +112,7 @@ class Rainhour:
                         if rainlevel["niveauPluie"] > 1 : rainInHour = 1
                         if rainlevel["niveauPluie"] == 4 : heavyRainInHour = 1
                         rainHourForecast[minutesdelta] = rainlevel["niveauPluie"]
+                        ###rainHourForecast[minutesdelta] = random.randint(1,4)         # For tests
                         minutesdelta += 5
 
                     #self.log.debug(u"==> Rain forecast for the location '%s': rainForecastDate='%s', rainInHour=%d, heavyRainInHour=%d, rainHourForecast: %s" % (self._weather_loc, rainForecastDate, rainInHour, heavyRainInHour, format(rainHourForecast)))
@@ -129,7 +131,8 @@ class Rainhour:
             rainForecastNb = rainForecastNb + niveauPluieText + ','
             #rainForecastNb.append(niveauPluieText.encode('ascii'))
         return rainForecastNb[0:-1]
-        #return "16h35-16h55:1,16h55-17h15:2,17h15-17h35:1"
-        #return "22h20-22h25:1,22h30-22h35:2,22h40-22h50:3,22h55-23h00:4,23h05-23h10:5"
+        #return "05h40-05h55:1,05h55-06h05:2,06h05-06h10:3,06h10-06h20:4,06h20-06h30:3,06h30-06h40:2"   # For tests
+        #return "16h35-16h55:1,16h55-17h15:2,17h15-17h35:1"                                             # For tests
+        #return "22h20-22h25:1,22h30-22h35:2,22h40-22h50:3,22h55-23h00:4,23h05-23h10:5"                 # For tests
 
 

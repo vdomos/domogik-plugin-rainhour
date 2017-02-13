@@ -6,3 +6,9 @@ Changelog
 ===
 
 * Plugin creation
+
+1.0
+===
+
+* First stable version
+
