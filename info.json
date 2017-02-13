@@ -4,7 +4,7 @@
     "identity": {
         "author": "domos", 
         "author_email": "domos.vesta at gmail dt com", 
-        "tags": ["computer"], 
+        "tags": ["weather"], 
         "dependencies": [],
         "description": "Domogik Plugin for 'Meteo France' rain forecast for next hour", 
         "domogik_min_version": "0.5.0", 
